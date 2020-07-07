@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyge.empl.repository.HllcEmployeeMapper">
+  <!--增加员工-->
+  <insert id="saveEmployee" parameterType="com.happyge.empl.model.HllcEmployee">
+
+        insert into hllc_employee(enID,enName,enSex,enIdentity,enBirthday,enHeadphoto,enSocial,enDepartment,enPost,enDate,enCulture,enMarriage,enoPolitic,enNation,enAddress,enAddressNow,enNumber,enElsenumber,enUrgentpeople,enUrgentnumber,enSchool,enMajor,enGraduation,enEducation,enAcademic,enIfsocial,enElse,poid,enStatus,enCity,enCityNow,enProvince,enProvinceNow,enCountry,enCountryNow,enRegion,enRegionNow)
+        values (#{enId},#{enName},#{enSex},#{enIdentity},#{enBirthday},#{enHeadphoto},#{enSocial},#{enDepartment},#{enPost},#{enDate},#{enCulture},#{enMarriage},#{enoPolitic},#{enNation},#{enAddress},#{enAddressNow},#{enNumber},#{enElsenumber},#{enUrgentpeople},#{enUrgentnumber},#{enSchool},#{enMajor},#{enGraduation},#{enEducation},#{enAcademic},#{enIfsocial},#{enElse},#{poid},#{enStatus},#{enCity},#{enCityNow},#{enProvince},#{enProvinceNow},#{enCountry},#{enCountryNow},#{enRegionNow},#{enRegion})
+    </insert>
+
+  <!--实习员工回显-->
+  <select id="internList"  resultType="com.happyge.empl.model.HllcEmployee">
+        SELECT * FROM hllc_employee WHERE enStatus="实习"
+    </select>
+
+
+
+  <!--正式员工回显-->
+  <select id="formalList"   resultType="com.happyge.empl.model.HllcEmployee">
+        SELECT * FROM hllc_employee WHERE enStatus="在职"
+    </select>
+
+
+  <!--离职员工回显-->
+  <select id="quitList"  resultType="com.happyge.empl.model.HllcEmployee">
+        SELECT * FROM hllc_employee WHERE enStatus="离职"
+
+    </select>
+
+
+
+  <!--实习员工淘汰-->
+  <update id="eliminateEmployee" parameterType="com.happyge.empl.model.HllcEmployee" >
+        update hllc_employee set enStatus="离职" where enID=#{enId}
+    </update>
+
+  <!--删除离职员工-->
+  <delete id="deleteEmployee" parameterType="com.happyge.empl.model.HllcEmployee">
+        delete from hllc_employee where enID=#{enId}
+    </delete>
+
+  <!--把离职员工重新录取为实习员工-->
+  <update id="ReAdmissionEmployee" parameterType="com.happyge.empl.model.HllcEmployee">
+        update hllc_employee set enStatus="实习" where enID=#{enId}
+    </update>
+
+  <!--把实习员工正式录取-->
+  <update id="admissionEmployee" parameterType="com.happyge.empl.model.HllcEmployee">
+        update hllc_employee set enStatus="在职" where enID=#{enId}
+    </update>
+
+  <!--看看职位下是否有员工-->
+  <select id="selectPositionEmployee" resultType="java.lang.Integer">
+       select count(*) from hllc_employee where poid=#{xx}
+    </select>
+
+
+  <!--通过搜索条件搜索员工-->
+  <select id="findFomalCondition" parameterType="com.happyge.empl.model.HllcEmployee" resultType="com.happyge.empl.model.HllcEmployee">
+    select * from hllc_employee where enStatus  = "在职"
+    <if test="enName!=null and enName!=''">
+      and enName like '%' #{enName} '%'
+    </if>
+
+    <if test="enDepartment!='--请选择职位--'">
+
+      and enDepartment like '%' #{enDepartment} '%'
+    </if>
+
+    <if test="enPost!='--请选择部門--'" >
+      and enPost like '%' #{enPost} '%'
+    </if>
+    <if test="enIdentity!=null and enIdentity!=''">
+      and enIdentity like '%' #{enIdentity} '%'
+    </if>
+
+    <if test="enSex!='--请选择性别--'">
+      and enSex like '%' #{enSex} '%'
+    </if>
+
+    <if test="enNumber!=null and enNumber!=''">
+      and enNumber like '%' #{enNumber} '%'
+    </if>
+  </select>
+
+  <select id="findEmployeeMessage" resultType="com.happyge.empl.model.HllcEmployee">
+        select * from hllc_employee where enID = #{enId}
+    </select>
+
+  <!--修改员工信息-->
+  <update id="updateEmployee" parameterType="com.happyge.empl.model.HllcEmployee">
+        update hllc_employee set enName=#{enName},enSex=#{enSex},enIdentity=#{enIdentity},enBirthday=#{enBirthday},enSocial=#{enSocial},enHeadphoto=#{enHeadphoto},enDepartment=#{enDepartment},enPost=#{enPost},enDate=#{enDate},enCulture=#{enCulture},enMarriage=#{enMarriage},enoPolitic=#{enoPolitic},enNation=#{enNation},enCountry=#{enCountry},enName=#{enName},enProvince=#{enProvince},enCity=#{enCity},
+        enRegion=#{enRegion},enAddress=#{enAddress},enCountryNow=#{enCountryNow},enProvinceNow=#{enProvinceNow},enCityNow=#{enCityNow},enRegionNow=#{enRegionNow},enAddressNow=#{enAddressNow},enNumber=#{enNumber},enElsenumber=#{enElsenumber},enUrgentpeople=#{enUrgentpeople},enUrgentnumber=#{enUrgentnumber},enSchool=#{enSchool},enMajor=#{enMajor},enGraduation=#{enGraduation},enEducation=#{enEducation},
+        enAcademic=#{enAcademic},enIfsocial=#{enIfsocial},enElse=#{enElse} where enID=#{enId}
+    </update>
+
+  <!--看职位下是否有员工-->
+  <select id="findEmployeeBypoId" parameterType="java.lang.String"  resultType="java.lang.Integer">
+    select count(*) from hllc_employee where poid in
+    <foreach item="ids" collection="list" open="(" separator="," close=")">
+      #{ids}
+    </foreach>
+  </select>
+
+  <!--批量删除员工-->
+  <update id="deleteAllEmployee" parameterType="java.util.List">
+    update hllc_employee set enStatus="离职" where enID in
+    <foreach collection="list" item="ids" open="(" separator="," close=")">
+      #{ids}
+    </foreach>
+  </update>
+</mapper>
+

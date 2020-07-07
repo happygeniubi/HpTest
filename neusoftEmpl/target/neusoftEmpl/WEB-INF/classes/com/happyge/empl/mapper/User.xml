@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.happyge.empl.repository.UserMapper">
+
+    <!-- 查询用户和密码进行登录 -->
+    <select id="findByUsername" resultType="com.happyge.empl.model.HllcUser" parameterType="String">
+		select * from hllc_user where uname = #{username}
+	</select>
+
+    <!--增加用户名，密码，昵称，用户状态，创建时间注册-->
+    <insert id="register" parameterType="com.happyge.empl.model.HllcUser">
+		 insert into hllc_user (uname, upassword, upetname, ucreatetime)
+        values (#{uname},#{upassword},#{upetname},#{ucreatetime})
+	</insert>
+
+	<!--统计-->
+    <select id="findAllCount" resultType="java.lang.Integer">
+		  select count(*) from hllc_user
+	</select>
+
+	<!--按页数排列-->
+    <select id="list" resultType="com.happyge.empl.model.HllcUser">
+			select * from hllc_user  limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+	</select>
+
+    <select id="listUser" resultType="com.happyge.empl.model.HllcUser">
+			select * from hllc_user
+	</select>
+
+	<!--添加用户-->
+	<insert id="addUser" parameterType="com.happyge.empl.model.HllcUser">
+		  insert  into hllc_user(uid,uname,upassword,upetname,ustatus,ucreatetime,usalt) value (#{uid},#{uname},#{upassword},#{upetname},#{ustatus},#{ucreatetime},#{usalt})
+	</insert>
+
+	<!--查找用户名称名称-->
+	<select id="findStatusName" resultType="java.lang.String">
+        select ustatus from hllc_user group  by ustatus
+    </select>
+
+	<!--删除用户-->
+	<delete id="deleteUser" parameterType="com.happyge.empl.model.HllcUser" >
+	    delete from hllc_user where uid= #{uid}
+	</delete>
+
+	<!--通过名字查询用户-->
+	<select id="findUserName" parameterType="map" resultType="com.happyge.empl.model.HllcUser">
+		select * from hllc_user where uname like "%"#{content,jdbcType=VARCHAR}"%"
+		limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+	</select>
+
+	<!--通过名字查询用户的总数-->
+	<select id="findUserCount" resultType="java.lang.Integer">
+		select count(*) from hllc_user where uname like "%"#{content}"%"
+    </select>
+
+	<!-- 查询用户所有角色 -->
+	<select id="listRoles" parameterType="java.lang.String" resultType="java.lang.String">
+		select r.role from hllc_user u inner join sys_users_roles ur on u.uid like ur.user_id
+		inner join sys_roles r on ur.role_id=r.id where u.uname=#{username}
+		and r.available=0
+	</select>
+
+	<!-- 查询用户所有权限,返回值是权限名集合 -->
+	<select id="listPermissions" parameterType="java.lang.String" resultType="java.lang.String">
+		select p.permission from hllc_user u inner join sys_users_roles ur on u.uid like ur.user_id
+		inner join sys_roles r on ur.role_id=r.id inner join sys_roles_permissions rp
+		on r.id=rp.role_id inner join sys_permissions p on p.id=rp.permission_id
+		where u.uname=#{username} and r.available=0 and p.available=0
+	</select>
+
+	<!--添加用户id 权限 id-->
+	<insert id="addUser_Roles" parameterType="com.happyge.empl.model.HllcUser_roles">
+		insert into sys_users_roles(user_id,role_id)  value (#{user_id},#{role_id})
+	</insert>
+
+	<!--查询部门-->
+	<select id="findUser" parameterType="java.lang.String" resultType="com.happyge.empl.model.HllcUser">
+		select * from hllc_user where uname like #{content}
+	</select>
+
+
+	<!--获得一个部门的全部的信息-->
+	<select id="updateUser" resultType="com.happyge.empl.model.HllcUser">
+		select * from hllc_user where uid = #{xx}
+	</select>
+
+	<!--修改部门-->
+	<update id="updateUr" parameterType="com.happyge.empl.model.HllcUser">
+        update hllc_user set uname=#{uname},upassword=#{upassword},upetname=#{upetname} where uid=#{uid}
+    </update>
+</mapper>
+

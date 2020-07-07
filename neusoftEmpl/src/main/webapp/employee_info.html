@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实习员工</title>
+
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./js/plugins/kindeditor-4.1.10/themes/default/default.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/plugins/my97datepicker/WdatePicker.js"></script>
+<script src="./js/plugins/kindeditor-4.1.10/kindeditor-min.js"></script>
+<script src="./js/plugins/kindeditor-4.1.10/zh_CN.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/employee_info.js"></script>
+</head>
+
+<body>
+
+	<div class="container main-container">
+		
+		 <div class="emi-box">
+		 	 <span class="emi-title">员工信息</span>
+		 	 <div class="row">
+		 	 	<div class="col-md-6">带 <span>*</span> 为必须填</div>
+		 	 	<div class="col-md-6 text-align-right">
+		 	 		<button type="button" class="btn btn-info btn-save-or-modify">
+		 	 		<span class="glyphicon glyphicon-th"></span>&nbsp;保存或修改员工信息
+		 	 		</button>
+		 	 	</div>
+		 	 </div>
+			 <!-- 基本信息表格 -->
+			 <table class="table table-bordered margin-top-10 emi-table">
+			 		<tr>
+			 			<td class="emi-key fullname-label"><span>*</span>姓名:</td>
+			 			<td><input type="text" class="emi-input fullname" placeholder="姓名"/></td>
+			 			<td class="emi-key"><span>*</span>性别:</td>
+			 			<td colspan="3">
+			 				<label class="emi-label"><input type="radio" />男</label>
+			 				<label class="emi-label"><input type="radio" />女</label>
+			 			</td>
+			 			<td class="emi-photo" rowspan="5">
+			 				<img src="./images/defaultphoto.jpg" alt="" title="" class="emi-photo-image"/>
+			 			</td>			  			 
+			 		</tr>
+			 		<tr>
+			 			<td class="emi-key"><span>*</span>身份证号:</td>
+			 			<td><input type="text" class="emi-input" placeholder="身份证号"/></td>
+			 			<td class="emi-key"><span>*</span>出生年月:</td>
+			 			<td><input type="text" class="emi-input date-before" placeholder="出生年月"/></td>
+			 			<td class="emi-key">社保卡号:</td> 
+			 			<td><input type="text" class="emi-input" placeholder="社保卡号"/></td>
+			 		</tr>
+			 		<tr>
+			 			<td class="emi-key depl-label"><span>*</span>部门:</td>
+			 			<td>
+			 				<select class="emi-select depl">
+			 					<option value= "-1">请选择...</option>
+			 					<option value= "0">财务部</option>
+			 				</select>
+			 			</td>
+			 			<td class="emi-key"><span>*</span>职位</td>
+			 			<td><select class="emi-select"><option>请选择...</option></select></td>
+			 			<td class="emi-key"><span>*</span>上岗日期</td>
+			 			<td><input type="text" class="emi-input date-after" placeholder="上岗日期"/></td>
+			 		</tr>
+			 		<tr>
+			 			<td class="emi-key culture-label"><span>*</span>文化程度:</td>
+			 			<td colspan="5">
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="不识字"/>不识字</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="小学"/>小学</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" vaule="初中"/>初中</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="技工"/>技工</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="高中"/>高中</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="大学"/>大学</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="硕士"/>硕士</label>
+			 				<label class="emi-label"><input type="radio" name="culture" class="culture" value="博士及以上"/>博士及以上</label>
+			 			</td>
+			 		</tr>		 	
+			 		<tr>
+			 			<td class="emi-key"><span>*</span>婚姻状况:</td>
+			 			<td colspan="5">
+			 				<label class="emi-label"><input type="radio" />未婚</label>
+			 				<label class="emi-label"><input type="radio" />已婚</label>
+			 				<label class="emi-label"><input type="radio" />离婚</label>
+			 				<label class="emi-label"><input type="radio" />丧偶</label>
+			 				<label class="emi-label"><input type="radio" />其他</label>
+			 			</td>
+			 		</tr>		 	
+			 			<tr>
+			 			<td class="emi-key"><span>*</span>政治面貌:</td>
+			 			<td colspan="6">
+			 				<label class="emi-label"><input type="radio" />无党派民主人士</label>
+			 				<label class="emi-label"><input type="radio" />中共党员</label>
+			 				<label class="emi-label"><input type="radio" />共青团员</label>
+			 				<label class="emi-label"><input type="radio" />民革党员</label>
+			 				<label class="emi-label"><input type="radio" />民盟盟员</label>
+			 				<label class="emi-label"><input type="radio" />农民工党员</label>
+			 				<label class="emi-label"><input type="radio" />其他</label>
+			 			</td>		 			
+			 		</tr>
+			 		<tr>
+			 			<td class="emi-key"><span>*</span>民族</td>
+			 			<td colspan="6">
+			 				<label class="emi-label"><input type="radio" />汉族</label>
+			 				<label class="emi-label"><input type="radio" />藏族</label>
+			 				<label class="emi-label"><input type="radio" />彝族</label>
+			 				<label class="emi-label"><input type="radio" />回族</label>
+			 				<label class="emi-label"><input type="radio" />维族</label>
+			 				<label class="emi-label"><input type="radio" />苗族</label>
+			 				<label class="emi-label"><input type="radio" />其他</label>
+			 			</td>		
+			 		</tr>	
+			 </table>
+			 
+			 <!-- 地址信息表格 -->
+			 <table class="table table-bordered margin-top-10 emi-table">
+			 	<tr>
+			 		<td class="emi-key"><span>*</span>户籍地址:</td>
+			 		<td colspan="6">
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<input type="text" class="emi-input emi-address-input" placeholder="详细信息">
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key"><span>*</span>现居住地址:</td>
+			 		<td colspan="6">
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<select class="emi-select emi-address"><option>请选择...</option></select>
+			 			<input type="text" class="emi-input emi-address-input" placeholder="详细信息">
+			 		</td>
+			 	</tr>
+			 </table>
+			 
+			 <!-- 详细信息表格 -->
+			  <table class="table table-bordered margin-top-10 emi-table">
+			 	<tr>
+			 		<td class="emi-key"><span>*</span>手机号码:</td>
+			 		<td><input type="text" class="emi-input" placeholder="手机号码"></td>
+			 		<td class="emi-key"><span>*</span>其他联系方式:</td>
+			 		<td colspan="3"><input type="text" class="emi-input" placeholder="其他联系方式"></td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key"><span>*</span>紧急联系人:</td>
+			 		<td><input type="text" class="emi-input" placeholder="紧急联系人"></td>
+			 		<td class="emi-key"><span>*</span>紧急电话:</td>
+			 		<td colspan="3"><input type="text" class="emi-input" placeholder="紧急电话"></td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key">毕业院校:</td>
+			 		<td><input type="text" class="emi-input" placeholder="毕业院校"></td>
+			 		<td class="emi-key">所学专业:</td>
+			 		<td colspan="3"><input type="text" class="emi-input" placeholder="所学专业"></td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key">毕业时间:</td>
+			 		<td><input type="text" class="emi-input date-before" placeholder="毕业时间"></td>
+			 		<td class="emi-key">学历:</td>
+			 		<td><input type="text" class="emi-input" placeholder="学历"></td>
+			 		<td class="emi-key">获得学位:</td>
+			 		<td><input type="text" class="emi-input" placeholder="获得学位"></td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key"><span>*</span>是否缴纳社保:</td>
+			 		<td colspan="5">
+			 			<label class="emi-label"><input type="radio" />是</label>
+			 			<label class="emi-label"><input type="radio" />否</label>
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="emi-key">备注:</td>
+			 		<td colspan="5"><input type="text" class="emi-input" placeholder="备注"></td>
+			 	</tr>
+			 </table>
+			 
+			 <!-- 工作经历 -->
+			 <table class="table table-bordered margin-top-10 emi-table	">
+			 		<tr>
+			 			<td class="emi-key"><button type="button" class="btn btn-success btn-xs btn-add-job">新增工作经历</button></td>
+			 			<td>
+			 				<table class="table table-bordered emi-table">
+			 						<thead>
+			 							<tr>
+			 								<th>单位名称</th>
+			 								<th>入职时间</th>
+			 								<th>离职时间</th>
+			 								<th>岗位</th>
+			 								<th>离职原因</th>
+			 								<th>操作</th>
+			 							</tr>
+			 						</thead>
+			 						<tbody class="tbody-job-list">
+			 							<tr class="tr-job">
+			 								<td><input type="text" class="emi-input" placeholder="单位名称"></td>
+			 								<td><input type="text" class="emi-input date" onclick="initMy97datepicker()" onfocus="initMy97datepicker()" placeholder="入职名称"></td>
+			 								<td><input type="text" class="emi-input date" onclick="initMy97datepicker()" onfocus="initMy97datepicker()" placeholder="离职时间"></td>
+			 								<td><input type="text" class="emi-input" placeholder="岗位"></td>
+			 								<td><input type="text" class="emi-input" placeholder="离职原因"></td>
+			 								<td><button type="button" class="btn btn-default btn-xs" onclick="removeJob(this)">删除</button></td>
+			 							</tr>
+			 						</tbody>
+			 				</table>
+			 			</td>
+			 		</tr>
+			 </table>
+			 <div class="emi-note">
+			 		1.此表作为公司人力资源记录，将被用于人力资源管理相关事宜，请认真据实填写。<br/>
+			 		2.此表由公司组织定期填写，期间如有重要变更请及时通知人力资源部。
+			 </div>
+		 </div>
+	</div>
+
+	<div class="container footer-container">开发者-happygod-<a href>http://www.happygeniubibibibi.com</a></div>
+</body>
+</html>

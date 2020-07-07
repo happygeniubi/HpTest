@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录</title>
+
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap-dialog.min.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-dialog.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/login.js"></script>
+
+</head>
+
+<body>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document" style="width:430px;">
+			<div class="modal-content login-modal-content">
+				<div class="modal-header modal-header-primary">
+					<h4 class="modal-title" id="myModalLabel">用户登录</h4>
+				</div>
+				<div class="modal-body">
+					<table class="login-table">
+						<tr>
+							<td></td>
+							<td>初始帐号及密码:admin / happygeniubi</td>
+						</tr>
+						<tr class="login-tr">
+							<td class="login-key">用户名:</td>
+							<td><input type="text" class="form-control username" placeholder="用户名" /></td>
+						</tr>
+						<tr class="login-tr">
+							<td class="login-key">密码:</td>
+							<td><input type="password" class="form-control password" placeholder="密码" /></td>
+						</tr>
+						<tr class="login-tr">
+							<td class="login-key">验证码:</td>
+							<td>
+								<input type="text" maxlength="4" class="form-control login-verify" placeholder="验证码" />
+								<img class="login-verify-img"  src="./hzl/0/findVerifycode"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn login-btn btn-default reset">重置</button>
+					<button type="button" class="btn login-btn btn-primary btn-login">登录</button>
+					<button type="button" class="btn login-btn btn-primary btn-facelogin">刷脸登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

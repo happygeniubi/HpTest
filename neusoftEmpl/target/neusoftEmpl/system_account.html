@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实习员工</title>
+
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap-dialog.min.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-dialog.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/system_account.js"></script>
+</head>
+
+<body>
+	<div class="container main-container">
+	
+	<div class="container breadcrumb-container">
+		<ol class="breadcrumb">
+			<li>管理系统</li>
+			<li>权限管理</li>
+			<li class="active">用户管理</li>
+		</ol>
+	</div>
+	
+		<!-- 代码区 -->
+		<div class="row">
+			<div class="col-md-10">
+				
+				<div class="input-group w600">
+				
+					<input type="text" class="form-control search" placeholder="请输入搜索内容..." />
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-search">
+							<span class="glyphicon glyphicon-search"></span>&nbsp;搜索
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2 text-align-right">
+				<button type="button" class="btn btn-primary btn-creation">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;新增帐号
+				</button>
+			</div>
+		</div>
+		<!-- 数据列表 -->
+		<table class="table table-bordered table-hover margin-top-20"> 
+			<thead>
+				<tr>
+					<th style="width:100px">编号</th>
+					<th style="width:180px">帐户名</th>
+					<th style="width:180px">昵称</th>
+					<th style="width:150px">创建时间</th>
+					<th style="width:180px">创建者</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="data-body">
+
+			</tbody> 
+		</table>
+		<!--<ul class="pagination">-->
+			<!--<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&raquo;</span></a></li>-->
+			<!--<li class="active"><a href="#">1</a></li>-->
+			<!--<li><a href="#">2</a></li>-->
+			<!--<li><a href="#">3</a></li>-->
+			<!--<li><a href="#">4</a></li>-->
+			<!--<li><a href="#">5</a></li>-->
+			<!--<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>-->
+		<!--</ul>-->
+		<nav id="pagination"><ul class="pagination"></ul></nav>
+		
+	</div>
+
+	<div class="container footer-container">开发者-happygod-<a href>http://www.happygeniubibibibi.com</a></div>
+
+	<!-- Modal 1 -->
+	<div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="AccountModalLabel">
+	  <div class="modal-dialog w420" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header modal-header-primary">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="accountModalLabel">帐号管理</h4>
+	      </div>
+	      <div class="modal-body">
+	      		<input type="text" class="form-control acc-username" placeholder="帐号名" />
+	      		<input type="text" class="form-control margin-top-10 acc-nickname" placeholder="呢称"/>
+	      		<input type="password" class="form-control margin-top-10 acc-password" placeholder="密码" />
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-primary btn-save">确定</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+		<!-- Modal 2 -->
+	<div class="modal fade" id="accountRoleModal" tabindex="-1" role="dialog" aria-labelledby="accountRoleModalLabel">
+	  <div class="modal-dialog w420" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header modal-header-primary">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="accountRoleModalLabel">帐号管理</h4>
+	      </div>
+	      <div class="modal-body">
+	           <ul class="role-list">
+	           		<li class="role-item">
+	           			<label>
+	           				<input type="checkbox" value="0" />角色名称
+	           			</label>
+	           		</li>
+	           </ul>
+	      </div>
+	      <div class="modal-footer">
+	       		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<style type="text/css">
+		.role-list{list-style-type:none; padding:0px; border:1px solid #eee; border-bottom:0 none;}
+		.role-item{margin:0px; border-bottom:1px solid #eee; cursor:pointer;}
+		.role-item:hover{background:#f5f5f5;}
+		.role-item label{font-weight:normal; line-height:22px; width:100%; padding:5px 10px; height:100%;}
+		.role-item input{float:left; margin-right:4px;}
+	</style>
+	<script src="./js/bootstrap-pagy.min.js"></script>
+</body>
+</html>

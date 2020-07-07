@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyge.empl.repository.HllcNoticeMapper">
+
+
+  <!--公告总数-->
+  <select id="noListCount" resultType="java.lang.Integer">
+        select count(*) from hllc_notice
+    </select>
+
+  <!--公告回显-->
+  <select id="noList"  resultType="com.happyge.empl.model.HllcNotice">
+        select * from  hllc_notice
+    </select>
+
+  <!--增加公告-->
+  <insert id="saveNotice" parameterType="com.happyge.empl.model.HllcNotice">
+        insert into hllc_notice(noTitle,noMessage,noDate)  values (#{noTitle},#{noMessage},#{noDate})
+    </insert>
+
+  <!--通过一个id获得公告的信息-->
+  <select id="findNoticeById" resultType="com.happyge.empl.model.HllcNotice">
+        select * from hllc_notice where noID=#{xx}
+    </select>
+
+  <!--通过id删除公告信息-->
+  <delete id="deleteNotice" parameterType="com.happyge.empl.model.HllcNotice">
+        delete from  hllc_notice where noID=#{noId}
+    </delete>
+
+  <!--根据id修改公告信息-->
+  <update id="updateNotice" parameterType="com.happyge.empl.model.HllcNotice">
+        update hllc_notice set noTitle=#{noTitle},noMessage=#{noMessage},noDate=#{noDate} where noId=#{noId}
+    </update>
+
+  <!--通过搜索内容搜索公告-->
+  <select id="findNotice"  resultType="com.happyge.empl.model.HllcNotice" parameterType="java.lang.String">
+        select * from hllc_notice  where noTitle like #{content}
+    </select>
+
+  <!--批量删除-->
+  <delete id="deleteMany" parameterType="java.util.List">
+    delete from hllc_notice where noID in
+    <foreach item="ids" collection="list" open="(" separator="," close=")">
+      #{ids}
+    </foreach>
+  </delete>
+
+
+
+</mapper>
