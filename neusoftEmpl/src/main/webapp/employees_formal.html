@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实习员工</title>
+
+<link href="./css/bootstrap-dialog.min.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-dialog.min.js"></script>
+<script src="./js/bootstrap-pagy.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/employees_formal.js"></script>
+</head>
+
+<body>
+
+	<div class="container breadcrumb-container">
+		<ol class="breadcrumb">
+			<li>管理系统</li>
+			<li>员工信息管理</li>
+			<li class="active">正式员工</li>
+		</ol>
+	</div>
+
+	<div class="container main-container">
+		<!-- 代码区 -->
+		<div class="row">
+			<div class="col-md-10">
+				<select class="form-control w120 float-left margin-right-10 select-department"><option value="-1">请选择部门</option></select>
+				<select class="form-control w120 float-left margin-right-10 select-department"><option value="-1">请选择职位</option></select>
+				<div class="input-group w600">
+					
+					<input type="text" class="form-control text-search" placeholder="请输入搜索内容..." />
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-search">
+							<span class="glyphicon glyphicon-search"></span>&nbsp;搜索
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2 text-align-right">
+				<button type="button" class="btn btn-primary btn-creation">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;新增员工信息
+				</button>
+			</div>
+		</div>
+		<!-- 数据列表 -->
+		<table class="table table-bordered table-hover margin-top-20"> 
+			<thead>
+				<tr>
+					<th style="width:50px;">编号</th>
+					<th style="width:80px;">姓名</th>
+					<th style="width:50px;">性别</th>
+					<th style="width:160px;">身份证</th>
+					<th style="width:100px;">上岗日期</th>
+					<th style="width:180px;">所属部门</th>
+					<th style="width:190px;">职位</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="tbody-list">
+				<!--里面的数据结合后台显示-->
+				<tr>
+					<td>1</td>
+					<td>明凡桃</td>
+					<td>男</td>
+					<td>450621198210129182</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>倪又夏</td>
+					<td>女</td>
+					<td>511824198505152707</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>湛讯波</td>
+					<td>男</td>
+					<td>450981198404124331</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>云绍焱</td>
+					<td>男</td>
+					<td>450621198210129182</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>昌荔依</td>
+					<td>女</td>
+					<td>141032199207188316</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>明雄民</td>
+					<td>男</td>
+					<td>510501199012229297</td>
+					<td>2019-7-1</td>
+					<td>技术部</td>
+					<td>软件设计师</td>
+					<td>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-align-left'></span>记录</button>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-link'></span>培训</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-hand-left'></span>离职</button>
+					</td>				
+				</tr>			
+			</tbody>
+		</table>
+
+		<ul class="pagination">
+			<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&raquo;</span></a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+		</ul> 
+
+	<div class="container footer-container">
+		开发者-happygod-<a href>http://www.happygeniubibibibi.com</a>
+	</div>
+</body>
+</html>

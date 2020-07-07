@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyge.empl.repository.HappygeRoleModuleMapper">
+  <resultMap id="BaseResultMap" type="com.happyge.empl.model.HappygeRoleModule">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="creation" jdbcType="TIMESTAMP" property="creation" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="moduleCode" jdbcType="VARCHAR" property="modulecode" />
+    <result column="finds" jdbcType="BIT" property="finds" />
+    <result column="adds" jdbcType="BIT" property="adds" />
+    <result column="deletes" jdbcType="BIT" property="deletes" />
+    <result column="modifys" jdbcType="BIT" property="modifys" />
+    <result column="superCode" jdbcType="VARCHAR" property="supercode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, creation, label, moduleCode, finds, adds, deletes, modifys, superCode
+  </sql>
+  <select id="selectByExample" parameterType="com.happyge.empl.model.HappygeRoleModuleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from happyge_role_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from happyge_role_module
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="secureValid" parameterType="map" resultType="com.happyge.empl.model.HappygeRoleModule">
+    select * from `happyge_role_module` trm where exists(
+		select * from `happyge_account_role` tra where tra.username = #{username} and tra.label = trm.label
+		)and trm.moduleCode in (#{codes});
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from happyge_role_module
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.happyge.empl.model.HappygeRoleModuleExample">
+    delete from happyge_role_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.happyge.empl.model.HappygeRoleModule">
+    insert into happyge_role_module (id, creation, label, 
+      moduleCode, finds, adds, deletes, 
+      modifys, superCode)
+    values (#{id,jdbcType=BIGINT}, #{creation,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, 
+      #{modulecode,jdbcType=VARCHAR}, #{finds,jdbcType=BIT}, #{adds,jdbcType=BIT}, #{deletes,jdbcType=BIT}, 
+      #{modifys,jdbcType=BIT}, #{supercode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happyge.empl.model.HappygeRoleModule">
+    insert into happyge_role_module
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creation != null">
+        creation,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="modulecode != null">
+        moduleCode,
+      </if>
+      <if test="finds != null">
+        finds,
+      </if>
+      <if test="adds != null">
+        adds,
+      </if>
+      <if test="deletes != null">
+        deletes,
+      </if>
+      <if test="modifys != null">
+        modifys,
+      </if>
+      <if test="supercode != null">
+        superCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creation != null">
+        #{creation,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="modulecode != null">
+        #{modulecode,jdbcType=VARCHAR},
+      </if>
+      <if test="finds != null">
+        #{finds,jdbcType=BIT},
+      </if>
+      <if test="adds != null">
+        #{adds,jdbcType=BIT},
+      </if>
+      <if test="deletes != null">
+        #{deletes,jdbcType=BIT},
+      </if>
+      <if test="modifys != null">
+        #{modifys,jdbcType=BIT},
+      </if>
+      <if test="supercode != null">
+        #{supercode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.happyge.empl.model.HappygeRoleModuleExample" resultType="java.lang.Long">
+    select count(*) from happyge_role_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update happyge_role_module
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.creation != null">
+        creation = #{record.creation,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modulecode != null">
+        moduleCode = #{record.modulecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finds != null">
+        finds = #{record.finds,jdbcType=BIT},
+      </if>
+      <if test="record.adds != null">
+        adds = #{record.adds,jdbcType=BIT},
+      </if>
+      <if test="record.deletes != null">
+        deletes = #{record.deletes,jdbcType=BIT},
+      </if>
+      <if test="record.modifys != null">
+        modifys = #{record.modifys,jdbcType=BIT},
+      </if>
+      <if test="record.supercode != null">
+        superCode = #{record.supercode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update happyge_role_module
+    set id = #{record.id,jdbcType=BIGINT},
+      creation = #{record.creation,jdbcType=TIMESTAMP},
+      label = #{record.label,jdbcType=VARCHAR},
+      moduleCode = #{record.modulecode,jdbcType=VARCHAR},
+      finds = #{record.finds,jdbcType=BIT},
+      adds = #{record.adds,jdbcType=BIT},
+      deletes = #{record.deletes,jdbcType=BIT},
+      modifys = #{record.modifys,jdbcType=BIT},
+      superCode = #{record.supercode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happyge.empl.model.HappygeRoleModule">
+    update happyge_role_module
+    <set>
+      <if test="creation != null">
+        creation = #{creation,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="modulecode != null">
+        moduleCode = #{modulecode,jdbcType=VARCHAR},
+      </if>
+      <if test="finds != null">
+        finds = #{finds,jdbcType=BIT},
+      </if>
+      <if test="adds != null">
+        adds = #{adds,jdbcType=BIT},
+      </if>
+      <if test="deletes != null">
+        deletes = #{deletes,jdbcType=BIT},
+      </if>
+      <if test="modifys != null">
+        modifys = #{modifys,jdbcType=BIT},
+      </if>
+      <if test="supercode != null">
+        superCode = #{supercode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happyge.empl.model.HappygeRoleModule">
+    update happyge_role_module
+    set creation = #{creation,jdbcType=TIMESTAMP},
+      label = #{label,jdbcType=VARCHAR},
+      moduleCode = #{modulecode,jdbcType=VARCHAR},
+      finds = #{finds,jdbcType=BIT},
+      adds = #{adds,jdbcType=BIT},
+      deletes = #{deletes,jdbcType=BIT},
+      modifys = #{modifys,jdbcType=BIT},
+      superCode = #{supercode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

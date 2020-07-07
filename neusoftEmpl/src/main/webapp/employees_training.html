@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实习员工</title>
+
+<link href="./css/bootstrap-dialog.min.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-dialog.min.js"></script>
+<script src="./js/bootstrap-pagy.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/employees_training.js"></script>
+</head>
+
+<body>
+
+	<div class="container breadcrumb-container">
+		<ol class="breadcrumb">
+			<li>管理系统</li>
+			<li>员工信息管理</li>
+			<li class="active">培训项目</li>
+		</ol>
+	</div>
+
+	<div class="container main-container">
+		<!-- 代码区 -->
+		<div class="row">
+			<div class="col-md-10">
+				<div class="input-group w600">
+					<input type="text" class="form-control text-search" placeholder="请输入搜索内容..." />
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-search">
+							<span class="glyphicon glyphicon-search"></span>&nbsp;搜索
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2 text-align-right">
+				<button type="button" class="btn btn-primary btn-creation">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;新增培训项目
+				</button>
+			</div>
+		</div>
+		<!-- 数据列表 -->
+		<table class="table table-bordered table-hover margin-top-20"> 
+			<thead>
+				<tr>
+					<th style="width:70px;">编号</th>
+					<th style="width:150px;">项目名称</th>
+					<th style="width:70px;">数量 (人)</th>
+					<th style="width:100px;">开始日期</th>
+					<th style="width:100px;">结束日期</th>
+					<th style="width:80px;">中途参加</th>
+					<th style="width:100px;">状态</th>
+					<th style="width:120px;">创建人</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="tbody-list">
+				<!--里面的数据结合后台显示-->
+				<tr>
+					<td>1</td>
+					<td>应知应会的知识</td>
+					<td>5</td>
+					<td>2019-01-11</td>
+					<td>2019-01-15</td>
+					<td>否</td>
+					<td>进行中</td>
+					<td>Happyge</td>
+					<td>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-menu-left'></span>详情</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-paperclip'></span>记录</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-play'></span>开始</button>
+						<button type='button' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-pause'></span>结束</button>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button>
+					</td>	
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>技能技巧</td>
+					<td>2</td>
+					<td>2019-10-15</td>
+					<td>2019-10-25</td>
+					<td>是</td>
+					<td>进行中</td>
+					<td>Happyge</td>
+					<td>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-menu-left'></span>详情</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-paperclip'></span>记录</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-play'></span>开始</button>
+						<button type='button' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-pause'></span>结束</button>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button>
+					</td>				
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>态度培训</td>
+					<td>3</td>
+					<td>2019-07-01</td>
+					<td>2019-07-10</td>
+					<td>是</td>
+					<td>进行中</td>
+					<td>Happyge</td>
+					<td>
+						<button type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-menu-left'></span>详情</button> 
+						<button type='button' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-paperclip'></span>记录</button>
+						<button type='button' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-play'></span>开始</button>
+						<button type='button' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-pause'></span>结束</button>
+						<button type='button' class='btn btn-primary btn-xs'><span class='glyphicon glyphicon-pencil'></span>编辑</button>
+					</td>	
+				</tr>
+			</tbody>
+		</table>
+
+		<ul class="pagination">
+			<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&raquo;</span></a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+		</ul> 
+
+	<div class="container footer-container">
+		开发者-happygod-<a href>http://www.happygeniubibibibi.com</a>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="mycreateModal">
+		<div class="modal-dialog" role="document" style="width:430px;">
+			<div class="modal-content login-modal-content">
+				<div class="modal-header modal-header-primary">
+					<h4 class="modal-title" id="mycreateModal">新增培训项目</h4>
+				</div>
+				<div class="modal-body">
+					  <input type="tel" class="form-control demp-name" placeholder="项目名称">
+					  <textarea class="form-control margin-top-10 demp-desc" rows="2" placeholder="项目描述信息"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary btn-save" >保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

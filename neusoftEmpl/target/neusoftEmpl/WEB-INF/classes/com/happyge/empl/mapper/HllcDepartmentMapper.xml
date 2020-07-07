@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyge.empl.repository.HllcDepartmentMapper">
+  <!--<insert id="add" parameterType="HllcPost" >-->
+  <!--insert into category_ ( name ) values (#{name})-->
+  <!--</insert>-->
+
+  <delete id="deletePosition" parameterType="com.happyge.empl.model.HllcDepartment">
+	        delete from hllc_department where deID= #{deid}
+	    </delete>
+
+  <!--<select id="get" parameterType="_int" resultType="Category">-->
+  <!--select * from   category_  where id= #{id}-->
+  <!--</select>-->
+
+  <!--<update id="update" parameterType="Category" >-->
+  <!--update category_ set name=#{name} where id=#{id}-->
+  <!--</update>-->
+  <select id="listPosition" parameterType="Map" resultType="com.happyge.empl.model.HllcDepartment">
+
+			select * from hllc_department  limit #{offset},#{pageNum}
+
+
+	    </select>
+
+  <select id="findAllCout" resultType="java.lang.Integer">
+		  select count(*) from hllc_department
+
+	    </select>
+
+  <select id="list" resultType="com.happyge.empl.model.HllcDepartment">
+
+			select * from hllc_department
+
+
+	    </select>
+
+
+  <!--查询部门-->
+  <select id="findPosition" parameterType="java.lang.String" resultType="com.happyge.empl.model.HllcDepartment">
+
+		select * from hllc_department where deName like #{content}
+	</select>
+
+  <!--增加部门-->
+  <insert id="savaPosition" parameterType="com.happyge.empl.model.HllcDepartment">
+		insert into hllc_department(deID,deName,deDate,deMessage) values (#{deId},#{deName},#{deDate},#{deMessage})
+
+	</insert>
+
+  <!--查找部门名称-->
+  <select id="findPositionName" resultType="com.happyge.empl.model.HllcDepartment">
+        select * from hllc_department
+    </select>
+
+  <!--通过部门查找职位-->
+  <select id="findPositionByDepartment" resultType="com.happyge.empl.model.HllcPost">
+        select * from hllc_post,hllc_department where hllc_post.deID=hllc_department.deID and hllc_department.deID=#{xx}
+    </select>
+
+  <!--获得一个部门的全部的信息-->
+  <select id="updateDeapartment" resultType="com.happyge.empl.model.HllcDepartment">
+		select * from hllc_department where deID = #{xx}
+	</select>
+
+  <!--修改部门-->
+  <update id="updateDe" parameterType="com.happyge.empl.model.HllcDepartment">
+        update hllc_department set deName=#{deName},deDate=#{deDate},deMessage=#{deMessage} where deID=#{deId}
+    </update>
+
+  <delete id="deleteAllDepartment" parameterType="java.util.List">
+    delete from hllc_department where deID in
+    <foreach collection="list" item="ids" open="(" separator="," close=")">
+      #{ids}
+    </foreach>
+  </delete>
+</mapper>
